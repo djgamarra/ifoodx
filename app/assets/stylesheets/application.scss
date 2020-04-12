@@ -7,6 +7,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -21,7 +22,24 @@ html, body {
 :root {
   --mdc-theme-primary: #ffcc5d;
   --mdc-theme-secondary: #ff7b5d;
-  --mdc-theme-on-primary: #141a1d;
+  --mdc-theme-on-primary: #101010;
+}
+
+.mdc-top-app-bar {
+  transition-property: background-color;
+  transition-duration: 200ms;
+
+  &.mdc-theme--transparent {
+    background-color: transparent;
+  }
+
+  &.mdc-top-app-bar--fixed-scrolled {
+    background-color: #101010;
+  }
+}
+
+.secondary-typography {
+  font-family: Montserrat, sans-serif;
 }
 
 // Material icons styles

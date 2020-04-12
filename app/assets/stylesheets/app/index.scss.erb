@@ -1,16 +1,6 @@
-.mdc-top-app-bar {
-  &.mdc-theme--transparent {
-    background-color: transparent;
-  }
-
-  .mdc-top-app-bar__title {
-    font-family: Montserrat, sans-serif;
-  }
-}
-
 #home-banner {
   overflow-x: hidden !important;
-  width: 100vw;
+  min-height: 100vmin;
 
   .home-banner {
     &__content {
@@ -29,7 +19,6 @@
         padding: calc(24px + 5vw) calc(24px + 15vw) calc(24px + 5vw) calc(24px + 5vw);
 
         p, h3 {
-          font-family: Montserrat, sans-serif !important;
           text-overflow: ellipsis !important;
         }
       }
@@ -69,6 +58,28 @@
       }
     }
   }
+}
+
+.mdc-button--outlined:not(:disabled) {
+  border-color: #FFF;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+}
+
+.char-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.secondary-typography {
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 690px) {
