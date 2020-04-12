@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="RailsWay" pattern="file[ifoodx]:app/assets/images//*||file[ifoodx]:app/assets/stylesheets//*||file[ifoodx]:app/controllers//*||file[ifoodx]:app/javascript/packs//*||file[ifoodx]:app/models//*||file[ifoodx]:app/views//*||file:config/routes.rb||file[ifoodx]:db//*||file[ifoodx]:public//*||file:.gitignore||file:Gemfile" />
+</component>
