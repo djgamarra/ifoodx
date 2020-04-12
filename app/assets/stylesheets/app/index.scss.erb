@@ -1,0 +1,46 @@
+.mdc-top-app-bar {
+  &.mdc-theme--transparent {
+    background-color: transparent;
+  }
+
+  .mdc-top-app-bar__title {
+    font-family: Montserrat, sans-serif;
+  }
+}
+
+#home-banner {
+  overflow-x: hidden;
+
+  #slide-0 {
+    background-image: url("<%= asset_path 'landing_0_img' %>");
+  }
+
+  #slide-1 {
+    background-image: url("<%= asset_path 'landing_1_img' %>");
+  }
+
+  #slide-2 {
+    background-image: url("<%= asset_path 'landing_2_img' %>");
+  }
+
+  .home-banner__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-color: rgba(38, 50, 56, .8);
+    background-blend-mode: color-burn;
+    background-size: cover;
+    transition-delay: 1s;
+    transition-property: opacity;
+    transition-duration: 1s;
+    opacity: 0;
+
+    &.shown {
+      transition-delay: 0ms;
+      opacity: 1;
+    }
+  }
+}

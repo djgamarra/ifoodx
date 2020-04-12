@@ -1,0 +1,58 @@
+/*
+ *= require material-components-web/dist/material-components-web.min
+ *= require_self
+ */
+
+// Root styles
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background-color: #ffcc5d;
+  color: #263238;
+}
+
+// Import the entire material library css
+//@import "material-components-web/dist/material-components-web.min.css";
+
+// Theme
+:root {
+  --mdc-theme-primary: #ffcc5d;
+  --mdc-theme-secondary: #ff7b5d;
+  --mdc-theme-on-primary: #263238;
+}
+
+// Material icons styles
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.material-icons.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
