@@ -25,6 +25,10 @@ html, body {
   --mdc-theme-on-primary: #101010;
 }
 
+.turbolinks-progress-bar {
+  background-color: #ffcc5d;
+}
+
 .mdc-top-app-bar {
   transition-property: background-color;
   transition-duration: 200ms;
