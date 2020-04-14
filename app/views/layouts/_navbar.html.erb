@@ -4,18 +4,25 @@
       <span class="mdc-top-app-bar__title secondary-typography">iFoodX</span>
     </div>
     <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-      <button class="mdc-button mdc-top-app-bar__action-item mdc-theme--on-secondary" data-mdc-auto-init="MDCRipple">
+      <%= link_to root_path, class: 'mdc-button mdc-top-app-bar__action-item mdc-theme--on-secondary', data: { 'mdc-auto-init': 'MDCRipple' } do %>
         <span class="mdc-button__ripple"></span>
         <span class="mdc-button__label">inicio</span>
-      </button>
-      <button class="mdc-button mdc-top-app-bar__action-item mdc-theme--on-secondary" data-mdc-auto-init="MDCRipple">
-        <span class="mdc-button__ripple"></span>
-        <span class="mdc-button__label">nuevo pedido</span>
-      </button>
-      <button class="mdc-button mdc-button--raised mdc-top-app-bar__action-item" data-mdc-auto-init="MDCRipple">
-        <span class="mdc-button__ripple"></span>
-        <span class="mdc-button__label">acceder</span>
-      </button>
+      <% end %>
+      <% if logged_in? %>
+        <%= link_to root_path, class: 'mdc-button mdc-top-app-bar__action-item mdc-theme--on-secondary', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+          <span class="mdc-button__ripple"></span>
+          <span class="mdc-button__label">nuevo pedido</span>
+        <% end %>
+        <%= link_to account_path, class: 'mdc-button mdc-button--raised mdc-top-app-bar__action-item', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+          <span class="mdc-button__ripple"></span>
+          <span class="mdc-button__label">mi cuenta</span>
+        <% end %>
+      <% else %>
+        <%= link_to login_path, class: 'mdc-button mdc-button--raised mdc-top-app-bar__action-item', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+          <span class="mdc-button__ripple"></span>
+          <span class="mdc-button__label">acceder</span>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </header>

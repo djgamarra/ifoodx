@@ -30,4 +30,17 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        email: "Correo electrónico"
+    errors:
+      messages:
+        invalid_enum: "Opción inválida"
+        blank: "No puede estar en blanco"
+        too_short: "Demasiado corto (mínimo %{count})"
+        too_long: "Demasiado largo (máximo %{count})"
+        taken: "Ya está en uso"
+        invalid: "Formato inválido"
+        present: "Campo innecesario"
+        less_than_or_equal_to: ""

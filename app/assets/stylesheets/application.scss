@@ -10,11 +10,6 @@ html, body {
   overflow-x: hidden;
 }
 
-::selection {
-  background-color: #ffcc5d;
-  color: #263238;
-}
-
 // Import the entire material library css
 //@import "material-components-web/dist/material-components-web.min.css";
 
@@ -23,6 +18,15 @@ html, body {
   --mdc-theme-primary: #ffcc5d;
   --mdc-theme-secondary: #ff7b5d;
   --mdc-theme-on-primary: #101010;
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: var(--mdc-theme-primary);
+}
+
+::selection {
+  background-color: #ffcc5d;
+  color: #263238;
 }
 
 .turbolinks-progress-bar {
@@ -43,7 +47,7 @@ html, body {
 }
 
 .secondary-typography {
-  font-family: Montserrat, sans-serif;
+  font-family: Rubik, sans-serif;
 }
 
 // Material icons styles

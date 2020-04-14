@@ -1,0 +1,43 @@
+#login {
+  min-height: 100vh;
+  width: 100vw;
+  background-image: url("<%= image_path 'login' %>");
+  background-position: bottom;
+  background-size: cover;
+  background-color: rgba(38, 50, 56, .7);
+  background-blend-mode: color-burn;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    min-height: 100vh;
+    width: 100vw;
+  }
+
+  &__form {
+    width: 100vw;
+  }
+
+  .mdc-card {
+    padding: 34px;
+    height: 100%;
+    text-align: center;
+
+    & > * {
+      margin: 0 0 20px 0;
+    }
+
+    :last-child {
+      margin: 0;
+    }
+
+    .material-icons {
+      margin: auto 13px;
+    }
+  }
+}
