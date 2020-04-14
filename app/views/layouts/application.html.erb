@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <title>iFoodX</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <%= Gon::Base.render_data %>
 
   <!--    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Roboto+Slab:300,400,700" rel="stylesheet">-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:500|Rubik:500">
@@ -15,6 +16,7 @@
 
 <body>
 <%= render partial: 'layouts/navbar' %>
+<%= render partial: 'layouts/notice' %>
 <%= yield %>
 <%= javascript_pack_tag 'mdc_auto_init', 'data-turbolinks-track': 'reload' %>
 </body>

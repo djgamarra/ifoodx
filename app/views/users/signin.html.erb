@@ -1,10 +1,10 @@
-<div id="login">
+<div id="signin">
   <div id="login__blur"></div>
   <div class="mdc-layout-grid" id="login__form">
     <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell--span-3"></div>
-      <div class="mdc-layout-grid__cell--span-6">
-        <%= form_with scope: :user, url: signin_path, class: 'mdc-card', method: :post do |f| %>
+      <div class="mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet"></div>
+      <div class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+        <%= form_with model: @user, url: signin_api_path, class: 'mdc-card', method: :post, local: true do |f| %>
           <h5 class="mdc-typography--headline5 secondary-typography">Iniciar sesión</h5>
           <br>
           <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
@@ -33,13 +33,13 @@
           <%= f.submit 'continuar', class: 'mdc-button mdc-button--raised', data: { 'mdc-auto-init': 'MDCRipple' } do %>
             <span class="mdc-button__ripple"></span>
           <% end %>
-          <%= link_to new_user_path, class: 'mdc-button mdc-button--outlined mdc-theme--on-primary', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+          <%= link_to signup_view_path, class: 'mdc-button mdc-button--outlined mdc-theme--on-primary', data: { 'mdc-auto-init': 'MDCRipple' } do %>
             <span class="mdc-button__ripple"></span>
             <span class="mdc-button__label">registrarse</span>
           <% end %>
         <% end %>
       </div>
-      <div class="mdc-layout-grid__cell--span-3"></div>
+      <div class="mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet"></div>
     </div>
   </div>
 </div>

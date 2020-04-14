@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user
 
   def index
-    render 'index'
   end
 
   def logged_in?
@@ -13,11 +12,11 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_user
-    @current_user ||= if session[:user_id].nil?
-                        nil
-                      else
-                        User.find_by id: session[:user_id]
-                      end
+    user_id = session[:user_id]
+    unless user_id.nil?
+      @current_user ||= User.find_by id: user_id
+      @current_user = nil unless @current_user.id == user_id
+    end
   end
 
   def require_logged_in

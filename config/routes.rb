@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root 'application#index'
-  resources :users, only: %i[new create edit update]
   scope :users do
-    post 'signin', controller: :users, as: :signin
-    get 'login', controller: :users, as: :login
+    get 'signin', to: 'users#signin_view', as: :signin_view
+    post 'signin', to: 'users#signin', as: :signin_api
+
+    get 'signup', to: 'users#signup_view', as: :signup_view
+    post 'signup', to: 'users#signup', as: :signup_api
+
     get 'account', controller: :users, as: :account
   end
 end
