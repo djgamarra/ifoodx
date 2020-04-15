@@ -27,13 +27,13 @@ class UsersController < ApplicationController
   end
 
   def signin
-    auth_p   = auth_params[:user]
-    email    = auth_p[:email]
-    password = auth_p[:password]
+    auth_p   = auth_params
+    email    = auth_p[:user][:email]
+    password = auth_p[:user][:password]
     @user    = User.find_by email: email
     if @user.nil? or not (@user.authenticate password)
       gon.push notice: 'Usuario o contraseña errados'
-      @user = User.new email: email, password: password
+      @user = User.new auth_p[:user]
       render :signin and return
     end
     gon.push notice: 'Sesión iniciada correctamente'

@@ -1,6 +1,10 @@
-<br><br><br><br><br><br>
+<div id="account">
+  <div id="account__inner">
+    <%= link_to signout_path, method: :post, class: 'mdc-button mdc-button--raised mdc-top-app-bar__action-item', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+      <span class="mdc-button__ripple"></span>
+      <span class="mdc-button__label">cerrar sesión</span>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to signout_path, method: :post, class: 'mdc-button mdc-button--raised mdc-top-app-bar__action-item', data: { 'mdc-auto-init': 'MDCRipple' } do %>
-  <span class="mdc-button__ripple"></span>
-  <span class="mdc-button__label">cerrar sesión</span>
-<% end %>
+<%= stylesheet_link_tag 'users' %>
