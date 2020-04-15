@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'signup', to: 'users#signup_view', as: :signup_view
     post 'signup', to: 'users#signup', as: :signup_api
 
-    get 'account', controller: :users, as: :account
+    get 'account', to: 'users#account', as: :account
+    post 'signout', to: 'users#signout', as: :signout
   end
 end

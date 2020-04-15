@@ -13,14 +13,25 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     user_id = session[:user_id]
-    unless user_id.nil?
+    if user_id.nil?
+      @current_user = nil
+    else
       @current_user ||= User.find_by id: user_id
       @current_user = nil unless @current_user.id == user_id
     end
   end
 
   def require_logged_in
-    flash[:auth] = 'Debe iniciar sesión primero'
-    redirect_to login_path if @current_user.nil?
+    if @current_user.nil?
+      gon.push notice: 'Debe iniciar sesión primero'
+      redirect_to signin_view_path
+    end
+  end
+
+  def require_unlogged_in
+    unless @current_user.nil?
+      gon.push notice: 'Ya inició sesión'
+      redirect_to root_path
+    end
   end
 end
