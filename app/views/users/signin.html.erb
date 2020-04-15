@@ -1,6 +1,6 @@
 <div id="signin">
-  <div id="login__blur"></div>
-  <div class="mdc-layout-grid" id="login__form">
+  <div id="signin__blur">
+  <div class="mdc-layout-grid" id="signin__form">
     <div class="mdc-layout-grid__inner">
       <div class="mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-2-tablet"></div>
       <div class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
@@ -8,7 +8,7 @@
           <h5 class="mdc-typography--headline5 secondary-typography">Iniciar sesión</h5>
           <br>
           <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
-            <i class="material-icons mdc-text-field__icon">account_circle</i>
+            <i class="material-icons mdc-text-field__icon">alternate_email</i>
             <%= f.text_field :email, class: 'mdc-text-field__input', id: 'email', type: 'email' %>
             <div class="mdc-notched-outline">
               <div class="mdc-notched-outline__leading"></div>
@@ -43,5 +43,5 @@
     </div>
   </div>
 </div>
-
+</div>
 <%= stylesheet_link_tag 'users' %>

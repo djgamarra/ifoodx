@@ -1,2 +1,151 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div id="signup">
+  <div id="signup__blur">
+  <div class="mdc-layout-grid" id="signup__form">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+      <div class="mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone">
+        <%= form_with model: @user, url: signup_api_path, class: 'mdc-card', method: :post, local: true do |f| %>
+          <h5 class="mdc-typography--headline5 secondary-typography">Crear cuenta</h5>
+          <br>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+              <div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+                <%= f.text_field :first_name, class: 'mdc-text-field__input', id: 'first_name', type: 'text' %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="first_name" class="mdc-floating-label">Nombres</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+              <div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+                <%= f.text_field :last_name, class: 'mdc-text-field__input', id: 'last_name', type: 'text' %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="last_name" class="mdc-floating-label">Apellidos</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell--span-7-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+              <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+                <i class="material-icons mdc-text-field__icon">alternate_email</i>
+                <%= f.text_field :email, class: 'mdc-text-field__input', id: 'email', type: 'email' %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="email" class="mdc-floating-label">Correo electrónico</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+              <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+                <i class="material-icons mdc-text-field__icon">lock</i>
+                <%= f.text_field :password, class: 'mdc-text-field__input', id: 'password', type: 'password' %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="password" class="mdc-floating-label">Contraseña</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell--span-7-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+              <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+                <i class="material-icons mdc-text-field__icon">home</i>
+                <%= f.text_field :password, class: 'mdc-text-field__input', id: 'address', type: 'text' %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="address" class="mdc-floating-label">Dirección (sólo Barranquilla)</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+              <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+                <i class="material-icons mdc-text-field__icon">call</i>
+                <%= f.text_field :phone_number, class: 'mdc-text-field__input', id: 'phone_number', type: 'tel' %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="phone_number" class="mdc-floating-label">Telefono</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <h5 class="mdc-typography--headline5 secondary-typography">Datos de pago</h5>
+          <br>
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+              <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+                <i class="material-icons mdc-text-field__icon">credit_card</i>
+                <%= f.text_field :credit_card, class: 'mdc-text-field__input', id: 'credit_card', type: 'text' %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="credit_card" class="mdc-floating-label">Numero de tarjeta</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-5-tablet mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+                <i class="material-icons mdc-text-field__icon">lock</i>
+                <%= f.text_field :ccv, class: 'mdc-text-field__input', id: 'ccv', type: 'password', maxlength: 3 %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="ccv" class="mdc-floating-label">CCV</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-2-phone">
+              <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+                <i class="material-icons mdc-text-field__icon">today</i>
+                <%= f.text_field :date, class: 'mdc-text-field__input', id: 'date', type: 'text', maxlength: 5 %>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="date" class="mdc-floating-label">Fecha</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <p class="mdc-typography--body1">Se realizará un cobro por el primer mes de suscripción de la membresía de <strong>iFoodX</strong> por un valor de $ 15.700 pesos colombianos. La suscripción puede ser cancelada en cualquier momento sin derecho a devolución alguna. <strong>iFoodX</strong> no realizará cobros automáticos, la suscripción se deberá pagar manualmente cada mes.</p>
+          <br>
+          <p class="mdc-typography--body1">Al continuar está usted aceptando todos los términos y condiciones de <strong>iFoodX Inc.</strong> y su política de tratamiento de información y privacidad.</p>
+          <br>
+          <%= f.submit 'continuar', class: 'mdc-button mdc-button--raised', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+            <span class="mdc-button__ripple"></span>
+          <% end %>
+          <%= link_to signin_view_path, class: 'mdc-button mdc-button--outlined mdc-theme--on-primary', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+            <span class="mdc-button__ripple"></span>
+            <span class="mdc-button__label">iniciar sesión</span>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+    </div>
+  </div>
+</div>
+</div>
+<%= stylesheet_link_tag 'users' %>
