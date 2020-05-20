@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     get 'account', to: 'users#account', as: :account
     post 'signout', to: 'users#signout', as: :signout
   end
+
+  resources :orders, only: [:index, :show, :new, :create]
 end
