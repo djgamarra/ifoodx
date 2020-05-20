@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8, maximum: 254 }, if: :password
 
   has_one :membership, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   after_create :create_membership_custom
   has_secure_password

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_053405) do
+ActiveRecord::Schema.define(version: 2020_05_20_215434) do
+
+  create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_ingredients_on_name", unique: true
+  end
 
   create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -18,6 +26,25 @@ ActiveRecord::Schema.define(version: 2020_04_15_053405) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_memberships_on_user_id", unique: true
+  end
+
+  create_table "order_ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.string "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id", "order_id"], name: "index_order_ingredients_on_ingredient_id_and_order_id", unique: true
+    t.index ["ingredient_id"], name: "index_order_ingredients_on_ingredient_id"
+    t.index ["order_id"], name: "index_order_ingredients_on_order_id"
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "preparation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -33,4 +60,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_053405) do
   end
 
   add_foreign_key "memberships", "users"
+  add_foreign_key "order_ingredients", "ingredients"
+  add_foreign_key "order_ingredients", "orders"
+  add_foreign_key "orders", "users"
 end
