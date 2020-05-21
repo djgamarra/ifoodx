@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     user_id = session[:user_id]
+    gon.push user_id: user_id
     if user_id.nil?
       @current_user = nil
     else

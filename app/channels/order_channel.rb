@@ -1,9 +1,9 @@
 class OrderChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
+    reject_subscription if params[:user_id].nil?
+    stream_from "user_#{params[:user_id]}"
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
   end
 end

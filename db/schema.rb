@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_060103) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "state", default: 0
-    t.integer "price"
+    t.integer "price", default: 0
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

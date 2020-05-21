@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     post 'signout', to: 'users#signout', as: :signout
   end
 
-  resources :orders, only: [:index, :show, :new, :create]
+  resources :orders, only: [:index, :show, :new, :create, :edit, :update]
 end

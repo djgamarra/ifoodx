@@ -1,0 +1,59 @@
+<% state = Order.states[@order.state] %>
+<%= form_with model: @order, method: :put, local: true do |f| %>
+  <div class="mdc-layout-grid" id="orders">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+        <h5 class="mdc-typography--headline5 secondary-typography">Cambiar precio</h5>
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--dense" data-mdc-auto-init="MDCTextField">
+          <%= f.text_field :price, class: 'mdc-text-field__input', id: 'prep', type: 'number', required: true, readonly: state != 0 %>
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+        <%= f.submit 'modificar', class: 'mdc-button mdc-button--raised', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+          <span class="mdc-button__ripple"></span>
+        <% end %>
+        <h5 class="mdc-typography--headline5 secondary-typography">Preparación</h5>
+        <p class="mdc-typography--body1"><%= @order.preparation %></p>
+      </div>
+      <div class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+        <h5 class="mdc-typography--headline5 secondary-typography">Cambiar estado</h5>
+        <ul class="mdc-list">
+          <% Order.states.each do |k, v| %>
+            <% if v <= state %>
+              <li class="mdc-list-item mdc-list-item--disabled">
+                <span class="mdc-list-item__text"><%= k %></span>
+              </li>
+            <% elsif v == state + 1 %>
+              <li class="mdc-list-item" onclick="forceSubmit()">
+                <span class="mdc-list-item__text"><%= k %></span>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <% f.submit 'asdsas', class: 'hide', id: 'force-submit' %>
+        <h5 class="mdc-typography--headline5 secondary-typography">Ingredientes</h5>
+        <ul class="mdc-list mdc-list--two-line">
+          <% @order.order_ingredients.each do |i| %>
+            <li class="mdc-list-item">
+            <span class="mdc-list-item__text">
+              <span class="mdc-list-item__primary-text"><%= i.ingredient.name %></span>
+              <span class="mdc-list-item__secondary-text">Cantidad: <%= i.amount %>
+                · $ <%= i.ingredient.price * i.amount %></span>
+            </span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+<%= stylesheet_link_tag 'orders' %>
+
+<script>
+    function forceSubmit() {
+        document.getElementById('force-submit').submit()
+    }
+</script>
