@@ -44,6 +44,10 @@ html, body {
   &.mdc-top-app-bar--fixed-scrolled {
     background-color: #101010;
   }
+
+  &--force-black {
+    background-color: #101010 !important;
+  }
 }
 
 .secondary-typography {
