@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount ActionCable.server => '/cable'
   root 'application#index'
   scope :users do
     get 'signin', to: 'users#signin_view', as: :signin_view
