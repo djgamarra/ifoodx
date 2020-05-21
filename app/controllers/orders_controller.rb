@@ -3,6 +3,10 @@ class OrdersController < ApplicationController
 
   def index
     @orders = @current_user.orders
+    @ingredients = Ingredient.all
+    ing          = {}
+    @ingredients.each { |i| ing[i.id] = i }
+    gon.push ingredients: ing
   end
 
   def show

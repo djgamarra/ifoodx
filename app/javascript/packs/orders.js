@@ -4,7 +4,7 @@ document.renderElement = (id) => {
     return `<li class="mdc-list-item" onclick="onIngredientSelectedClick(${id})">` +
         `     <span class="mdc-list-item__text">` +
         `       <span class="mdc-list-item__primary-text">${ing["name"]}</span>` +
-        `       <span class="mdc-list-item__secondary-text">Cantidad: ${cant} · $ ${ing["price"] * cant}</span>` +
+        `       <span class="mdc-list-item__secondary-text">Cantidad: ${cant} · Precio: $ ${ing["price"] * cant}</span>` +
         `       <input name="order[ingredients][${id}]" value="${cant}" class="hide">` +
         `     </span>` +
         `   </li>`
@@ -19,7 +19,8 @@ document.renderSelectedElements = () => {
             inner += document.renderElement(id)
             total += document.ingredients[id] * gon.ingredients[id]["price"]
         }
-        el.innerHTML = inner
+        if (total === 0) el.innerHTML = `<h6 class="mdc-typography--headline6">No ha seleccionado ingredientes</h6>`
+        else el.innerHTML = inner
         el = document.getElementById("total")
         if (el) el.innerHTML = `$ ${total}`
     }

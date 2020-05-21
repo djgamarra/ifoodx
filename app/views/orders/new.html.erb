@@ -2,19 +2,27 @@
 
 <div class="mdc-layout-grid" id="orders">
   <div class="mdc-layout-grid__inner">
-    <div class="mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+    <div class="mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-5-tablet mdc-layout-grid__cell--span-4-phone">
       <%= form_with model: @order, method: :post, local: true do |f| %>
         <h5 class="mdc-typography--headline5 secondary-typography">Ingredientes seleccionados</h5>
         <ul class="mdc-list mdc-list--two-line" id="selected-ingredients">
+          <h6 class="mdc-typography--headline6">No ha seleccionado ingredientes</h6>
         </ul>
         <h5 class="mdc-typography--headline5 secondary-typography">Preparación</h5>
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--fullwidth mdc-text-field--textarea mdc-text-field--no-label" data-mdc-auto-init="MDCTextField">
+          <%= f.text_area :preparation, class: 'mdc-text-field__input', id: 'prep', type: 'test', rows: 4, required: true %>
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
         <h5 class="mdc-typography--headline5 secondary-typography">Total ingredientes: <span id="total">$ 0</span></h5>
         <%= f.submit 'continuar', class: 'mdc-button mdc-button--raised', data: { 'mdc-auto-init': 'MDCRipple' } do %>
           <span class="mdc-button__ripple"></span>
         <% end %>
       <% end %>
     </div>
-    <div class="mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+    <div class="mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-4-phone">
       <h5 class="mdc-typography--headline5 secondary-typography">Ingredientes<br>disponibles</h5>
       <ul class="mdc-list mdc-list--two-line">
         <% @ingredients.each do |i| %>
