@@ -16,8 +16,7 @@ class ApplicationController < ActionController::Base
     if user_id.nil?
       @current_user = nil
     else
-      @current_user ||= User.find_by id: user_id
-      @current_user = nil unless @current_user.id == user_id
+      @current_user = User.find_by id: user_id
     end
   end
 

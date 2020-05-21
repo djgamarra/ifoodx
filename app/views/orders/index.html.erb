@@ -1,4 +1,4 @@
-<%= link_to new_order_path, class: 'mdc-button mdc-button--raised mdc-top-app-bar__action-item', id: 'new-order-btn', data: { 'mdc-auto-init': 'MDCRipple' }  do %>
+<%= link_to new_order_path, class: 'mdc-button mdc-button--raised mdc-top-app-bar__action-item', id: 'new-order-btn', data: { 'mdc-auto-init': 'MDCRipple' } do %>
   <span class="mdc-button__ripple"></span>
   <span class="mdc-button__label">nueva orden</span>
 <% end %>
@@ -6,7 +6,20 @@
   <div class="mdc-layout-grid__inner">
     <div class="mdc-layout-grid__cell--span-12">
       <% if @orders.any? %>
-
+        <h5 class="mdc-typography--headline5 secondary-typography">Pedidos</h5>
+        <ul class="mdc-list mdc-list--two-line">
+          <% @orders.each do |o| %>
+            <!--            <li class="mdc-list-item">-->
+            <%= link_to order_path(o), class: 'mdc-list-item' do %>
+            <span class="mdc-list-item__text">
+              <span class="mdc-list-item__primary-text"><%= o.created_at.strftime("%B %d, %Y") %></span>
+              <span class="mdc-list-item__secondary-text">Ingredients: <%= o.ingredients.size %>
+                · Total: $ <%= o.price %> · Estado: <strong><em><%= o.state %></em></strong></span>
+            </span>
+            <% end %>
+            <!--            </li>-->
+          <% end %>
+        </ul>
       <% else %>
         <h5 class="mdc-typography--headline5 secondary-typography">No has hecho ningun pedido aun</h5>
       <% end %>

@@ -19,6 +19,7 @@ document.renderSelectedElements = () => {
             inner += document.renderElement(id)
             total += document.ingredients[id] * gon.ingredients[id]["price"]
         }
+        inner += `<input name="order[price]" value="${total}" class="hide">`
         if (total === 0) el.innerHTML = `<h6 class="mdc-typography--headline6">No ha seleccionado ingredientes</h6>`
         else el.innerHTML = inner
         el = document.getElementById("total")

@@ -1,0 +1,26 @@
+<div class="mdc-layout-grid" id="orders">
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+      <h5 class="mdc-typography--headline5 secondary-typography">Estado: <em><strong><%= @order.state %></strong></em>
+      </h5>
+      <h5 class="mdc-typography--headline5 secondary-typography">Preparación</h5>
+      <p class="mdc-typography--body1"><%= @order.preparation %></p>
+    </div>
+    <div class="mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+      <h5 class="mdc-typography--headline5 secondary-typography">Ingredientes</h5>
+      <ul class="mdc-list mdc-list--two-line">
+        <% @order.order_ingredients.each do |i| %>
+          <li class="mdc-list-item">
+            <span class="mdc-list-item__text">
+              <span class="mdc-list-item__primary-text"><%= i.ingredient.name %></span>
+              <span class="mdc-list-item__secondary-text">Cantidad: <%= i.amount %>
+                · $ <%= i.ingredient.price * i.amount %></span>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%= stylesheet_link_tag 'orders' %>
