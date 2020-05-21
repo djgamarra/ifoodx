@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_060103) do
+ActiveRecord::Schema.define(version: 2020_05_21_094036) do
 
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_060103) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "state", default: 0
     t.integer "price", default: 0
+    t.integer "minimum_price"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_060103) do
     t.string "phone_number", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

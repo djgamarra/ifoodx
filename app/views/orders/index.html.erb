@@ -9,15 +9,13 @@
         <h5 class="mdc-typography--headline5 secondary-typography">Pedidos</h5>
         <ul class="mdc-list mdc-list--two-line">
           <% @orders.each do |o| %>
-            <!--            <li class="mdc-list-item">-->
-            <%= link_to order_path(o), class: 'mdc-list-item' do %>
+            <%= link_to @current_user.is_admin ? edit_order_path(o) : order_path(o), class: 'mdc-list-item' do %>
             <span class="mdc-list-item__text">
               <span class="mdc-list-item__primary-text"><%= o.created_at.strftime("%B %d, %Y") %></span>
               <span class="mdc-list-item__secondary-text">Ingredients: <%= o.ingredients.size %>
                 · Total: $ <%= o.price %> · Estado: <strong><em><%= o.state %></em></strong></span>
             </span>
             <% end %>
-            <!--            </li>-->
           <% end %>
         </ul>
       <% else %>
