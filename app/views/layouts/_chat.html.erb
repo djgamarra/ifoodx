@@ -4,7 +4,7 @@
   </div>
   <div id="messages">
     <% @order.messages.each do |m| %>
-      <div class="<%= @current_user.id == m.order.user_id ? 'l-message' : 'r-message' %>">
+      <div class="<%= m.user_id == m.order.user_id ? 'l-message' : 'r-message' %>">
         <p class="mdc-typography--body1"><%= m.text %></p>
       </div>
     <% end %>
