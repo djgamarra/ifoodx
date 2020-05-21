@@ -22,7 +22,19 @@
         <% end %>
       </ul>
     </div>
+    <%= render partial: 'layouts/chat' %>
   </div>
 </div>
 
 <%= stylesheet_link_tag 'orders' %>
+
+<script>
+    function toggle() {
+        const el = document.getElementById("chat")
+        if (el.className.includes("closed")) {
+            el.className = "opened shaped"
+        } else {
+            el.className = "closed shaped"
+        }
+    }
+</script>

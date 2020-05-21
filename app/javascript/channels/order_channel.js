@@ -19,5 +19,12 @@ consumer.subscriptions.create({channel: "OrderChannel", user_id: gon.user_id}, {
             document.getElementById("orders").outerHTML = body["specific"]
             notice.open()
         }
+        console.log(body)
+        if (body["chat"]) {
+            if (document.getElementById("chat").className.includes("opened")) body["chat"] = body["chat"].replace(`class="closed shaped"`, `class="opened shaped"`)
+            document.getElementById("chat").outerHTML = body["chat"]
+            notice.labelText = "Ha recibido un mensaje";
+            notice.open()
+        }
     }
 });

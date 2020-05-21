@@ -26,9 +26,9 @@ h6 {
 
 .mdc-list-item {
   border-radius: 10px !important;
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
   user-select: none;
 }
 
@@ -38,4 +38,65 @@ h6 {
   border-radius: 4px;
   border-style: solid;
   padding: 10px;
+}
+
+#chat {
+  position: fixed;
+  bottom: 30px;
+  height: 400px;
+  width: 300px;
+  background: #FFF;
+  z-index: 100;
+  transition-property: right;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 0 !important;
+
+  &.closed {
+    right: -280px;
+  }
+
+  &.opened {
+    right: 20px;
+  }
+
+  #messages {
+    flex: 1;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  #chat-header {
+    padding: 15px;
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
+
+  #chat-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+
+    .mdc-text-field {
+      flex: 1;
+    }
+  }
+
+  .l-message {
+    margin: 10px 30px 10px 0;
+    text-align: left;
+  }
+
+  .r-message {
+    margin: 10px 0 10px 30px;
+    text-align: right;
+  }
 }

@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_ingredients, dependent: :destroy
   has_many :ingredients, through: :order_ingredients
+  has_many :messages, dependent: :destroy
   enum state: {
       'En espera':                0,
       'Aceptado por restaurante': 1,

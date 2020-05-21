@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.preload(:ingredients).find_by(id: params[:id])
+    @order = Order.preload(:ingredients, messages: :user).find_by(id: params[:id])
   end
 
   def new
@@ -64,7 +64,7 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.preload(:ingredients).find_by(id: params[:id])
+    @order = Order.preload(:ingredients, messages: :user).find_by(id: params[:id])
   end
 
   def update
@@ -102,9 +102,24 @@ class OrdersController < ApplicationController
     redirect_to edit_order_path @order
   end
 
+  def send_message
+    @order = Order.preload(:ingredients, messages: :user).find_by(id: message_params[:order_id])
+    @order.messages.create message_params
+    ActionCable.server.broadcast "user_#{@order.user_id}", body: {
+        chat: render_to_string(partial: 'layouts/chat')
+    }
+    ActionCable.server.broadcast "user", body: {
+        chat: render_to_string(partial: 'layouts/chat')
+    }
+  end
+
   private
 
   def order_params
     params.require(:order).permit :preparation, :price
+  end
+
+  def message_params
+    params.require(:message).permit :text, :user_id, :order_id
   end
 end

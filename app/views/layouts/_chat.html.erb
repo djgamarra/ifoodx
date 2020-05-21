@@ -1,0 +1,28 @@
+<div id="chat" class="closed shaped">
+  <div id="chat-header" onclick="toggle()">
+    <h6 class="mdc-typography--headline6">Chat</h6>
+  </div>
+  <div id="messages">
+    <% @order.messages.each do |m| %>
+      <div class="<%= @current_user.id == m.order.user_id ? 'l-message' : 'r-message' %>">
+        <p class="mdc-typography--body1"><%= m.text %></p>
+      </div>
+    <% end %>
+  </div>
+  <%= form_with model: Message.new, url: '/orders/send_message', id: 'chat-message', method: :post, local: false do |f| %>
+    <div class="mdc-text-field mdc-text-field--no-label mdc-text-field--dense mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+      <input type="hidden" name="message[order_id]" value="<%= @order.id %>">
+      <input type="hidden" name="message[user_id]" value="<%= @current_user.id %>">
+      <%= f.text_field :text, class: 'mdc-text-field__input', id: 'text', min: 1, type: 'text' %>
+      <div class="mdc-notched-outline">
+        <div class="mdc-notched-outline__leading"></div>
+        <div class="mdc-notched-outline__notch">
+        </div>
+        <div class="mdc-notched-outline__trailing"></div>
+      </div>
+    </div>
+    <%= f.submit 'enviar', class: 'mdc-button', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+      <span class="mdc-button__ripple"></span>
+    <% end %>
+  <% end %>
+</div>

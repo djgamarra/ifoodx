@@ -51,6 +51,7 @@
         <% end %>
       </ul>
     </div>
+    <%= render partial: 'layouts/chat' %>
   </div>
 </div>
 
@@ -59,5 +60,14 @@
 <script>
     function forceSubmit() {
         document.getElementById('force-submit').submit()
+    }
+
+    function toggle() {
+        const el = document.getElementById("chat")
+        if (el.className.includes("closed")) {
+            el.className = "opened shaped"
+        } else {
+            el.className = "closed shaped"
+        }
     }
 </script>

@@ -1,6 +1,8 @@
-<%= link_to new_order_path, class: 'mdc-button mdc-button--raised mdc-top-app-bar__action-item', id: 'new-order-btn', data: { 'mdc-auto-init': 'MDCRipple' } do %>
-  <span class="mdc-button__ripple"></span>
-  <span class="mdc-button__label">nueva orden</span>
+<% unless @current_user.is_admin %>
+  <%= link_to new_order_path, class: 'mdc-button mdc-button--raised mdc-top-app-bar__action-item', id: 'new-order-btn', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+    <span class="mdc-button__ripple"></span>
+    <span class="mdc-button__label">nueva orden</span>
+  <% end %>
 <% end %>
 <div class="mdc-layout-grid" id="orders">
   <div class="mdc-layout-grid__inner">

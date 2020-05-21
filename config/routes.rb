@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     post 'signout', to: 'users#signout', as: :signout
   end
 
+  post 'orders/send_message', to: 'orders#send_message', as: :send_message
   resources :orders, only: [:index, :show, :new, :create, :edit, :update]
 end
