@@ -13,9 +13,9 @@
           <% @orders.each do |o| %>
             <%= link_to admin ? edit_order_path(o) : order_path(o), class: 'mdc-list-item' do %>
             <span class="mdc-list-item__text">
-              <span class="mdc-list-item__primary-text"><%= o.created_at.strftime("%B %d, %Y") %></span>
+              <span class="mdc-list-item__primary-text"><%= o.created_at.strftime("%B %d, %Y - %l:%M %p") %></span>
               <span class="mdc-list-item__secondary-text">Ingredients: <%= o.ingredients.size %>
-                · Total: $ <%= o.price %> · Estado: <strong><em><%= o.state %></em></strong></span>
+                · Total: $ <%= o.price %> · Estado: <strong class="text-state-<%= Order.states[o.state] %>"><em><%= o.state %></em></strong></span>
             </span>
             <% end %>
           <% end %>

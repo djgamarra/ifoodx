@@ -128,3 +128,17 @@ h6 {
   overflow: hidden;
   z-index: 9 !important;
 }
+
+.text-state {
+  &-0 {
+    color: #b00020;
+  }
+
+  &-1 {
+    color: #018786;
+  }
+
+  &-2 {
+    color: #6200ee;
+  }
+}

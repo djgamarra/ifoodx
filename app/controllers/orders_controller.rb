@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = if @current_user.is_admin
-                Order.preload(:ingredients).all
+                Order.preload(:ingredients).admin_order
               else
                 @current_user.orders.preload(:ingredients)
               end
@@ -33,33 +33,33 @@ class OrdersController < ApplicationController
     (params.require(:order).permit(ingredients: {})[:ingredients] || {}).each do |k, v|
       @order.order_ingredients.create ingredient_id: k.to_i, amount: v.to_i
     end
-    if @current_user.is_admin
-      @orders = Order.preload(:ingredients).all
-      ActionCable.server.broadcast "user", body: {
-        general: render_to_string(partial: 'layouts/p1', locals: { admin: true }),
-        specific: render_to_string(partial: 'layouts/p2'),
-        id: params[:id],
-      }
-      @orders = Order.where(user_id: @order.user_id).preload(:ingredients).all
-      ActionCable.server.broadcast "user_#{@order.user_id}", body: {
-        general: render_to_string(partial: 'layouts/p1', locals: { admin: false }),
-        specific: render_to_string(partial: 'layouts/p2'),
-        id: params[:id],
-      }
-    else
-      @orders = Order.preload(:ingredients).all
-      ActionCable.server.broadcast "user", body: {
-        general: render_to_string(partial: 'layouts/p1', locals: { admin: true }),
-        specific: render_to_string(partial: 'layouts/p2'),
-        id: params[:id],
-      }
-      @current_user.orders.preload(:ingredients)
-      ActionCable.server.broadcast "user_#{@current_user.id}", body: {
-        general: render_to_string(partial: 'layouts/p1', locals: { admin: false }),
-        specific: render_to_string(partial: 'layouts/p2'),
-        id: params[:id],
-      }
-    end
+    # if @current_user.is_admin
+    @orders = Order.preload(:ingredients).admin_order
+    ActionCable.server.broadcast "user", body: {
+      general: render_to_string(partial: 'layouts/p1', locals: { admin: true }),
+      specific: render_to_string(partial: 'layouts/p2'),
+      id: params[:id],
+    }
+    @orders = Order.where(user_id: @order.user_id).preload(:ingredients).all
+    ActionCable.server.broadcast "user_#{@order.user_id}", body: {
+      general: render_to_string(partial: 'layouts/p1', locals: { admin: false }),
+      specific: render_to_string(partial: 'layouts/p2'),
+      id: params[:id],
+    }
+    # else
+    #   @orders = Order.preload(:ingredients).admin_order
+    #   ActionCable.server.broadcast "user", body: {
+    #     general: render_to_string(partial: 'layouts/p1', locals: { admin: true }),
+    #     specific: render_to_string(partial: 'layouts/p2'),
+    #     id: params[:id],
+    #   }
+    #   @current_user.orders.preload(:ingredients)
+    #   ActionCable.server.broadcast "user_#{@current_user.id}", body: {
+    #     general: render_to_string(partial: 'layouts/p1', locals: { admin: false }),
+    #     specific: render_to_string(partial: 'layouts/p2'),
+    #     id: params[:id],
+    #   }
+    # end
     redirect_to order_path @order
   end
 
