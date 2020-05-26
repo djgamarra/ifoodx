@@ -53,7 +53,7 @@ group :test do
 end
 
 group :production do
-  gem "passenger", ">= 5.0.25"
+  gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
   gem 'redis'
 end
 
