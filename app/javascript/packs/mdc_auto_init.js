@@ -1,6 +1,7 @@
-import {autoInit} from "material-components-web";
+import {autoInit, topAppBar} from "material-components-web";
 
 function load() {
+    autoInit.register("MDCTopAppBar", topAppBar.MDCTopAppBar)
     autoInit();
     const notice_msg = gon.notice;
     if (notice_msg) {
