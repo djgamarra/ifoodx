@@ -12,7 +12,7 @@
             <div class="mdc-notched-outline__trailing"></div>
           </div>
         </div>
-        <%= f.submit 'modificar', class: 'mdc-button mdc-button--raised', data: { 'mdc-auto-init': 'MDCRipple' } do %>
+        <%= f.submit 'modificar', class: 'mdc-button mdc-button--raised', data: { 'mdc-auto-init': 'MDCRipple' }, disabled: state != 0 do %>
           <span class="mdc-button__ripple"></span>
         <% end %>
       <% end %>

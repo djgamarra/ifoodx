@@ -42,7 +42,7 @@ h6 {
 
 #chat {
   position: fixed;
-  bottom: 30px;
+  bottom: 10px;
   height: 400px;
   width: 300px;
   background: #FFF;
@@ -57,15 +57,17 @@ h6 {
   padding: 0 !important;
 
   &.closed {
-    right: -280px;
+    right: -305px;
   }
 
   &.opened {
-    right: 20px;
+    right: 10px;
   }
 
   #messages {
     flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 15px;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -91,12 +93,38 @@ h6 {
   }
 
   .l-message {
-    margin: 10px 30px 10px 0;
-    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    p {
+      text-align: left;
+      border-radius: 5px;
+      background-color: #ffcc5d;
+      padding: 5px 15px;
+      margin: 0;
+    }
   }
 
   .r-message {
-    margin: 10px 0 10px 30px;
-    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    p {
+      text-align: left;
+      border-radius: 5px;
+      background-color: #ff7b5d;
+      padding: 5px 15px;
+      margin: 0;
+    }
   }
+}
+
+#chat-opener {
+  position: absolute;
+  bottom: 0;
+  left: -110px;
+  overflow: hidden;
+  z-index: 9 !important;
 }
